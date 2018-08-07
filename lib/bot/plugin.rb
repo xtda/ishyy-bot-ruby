@@ -1,5 +1,6 @@
 module Bot
   class Plugin
+    include 'json'
     include Cinch::Plugin
 
     API_HOST = 'http://localhost:3000/v1/streamelements'.freeze

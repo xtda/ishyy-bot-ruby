@@ -9,7 +9,8 @@ module Bot
     match(/settax (.+)/, method: :settax)
     match(/setbonus (.+)/, method: :set_bonus)
     match(/funds$/, method: :funds)
-
+    match(/tax$/, method: :tax)
+    
     def transfer(message, option)
       give_to = option.split(' ')[0]
       amount = option.split(' ')[1]
