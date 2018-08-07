@@ -1,8 +1,7 @@
 module Bot
   class Tax < Plugin
     include Cinch::Plugin
-    include 'json'
-
+    
     listen_to :message
     def listen(message)
       return unless message.user.nick == 'streamelements'
