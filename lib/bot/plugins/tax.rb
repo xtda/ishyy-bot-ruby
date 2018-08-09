@@ -35,7 +35,7 @@ module Bot
     end
 
     def add_funds(win)
-      end_point = "mayor_system/funds/xtda616/#{win}"
+      end_point = "mayor_system/funds/add/xtda616/#{win}"
       post_request(end_point)
     end
   end

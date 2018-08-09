@@ -1,6 +1,8 @@
 module Bot
   class Plugin
-    include 'json'
+    require 'json'
+    require 'oj'
+
     include Cinch::Plugin
 
     API_HOST = 'http://localhost:3000/v1/streamelements'.freeze
@@ -36,7 +38,6 @@ module Bot
 
     def put_request(end_point)
       end_point = "#{API_HOST}/#{end_point}"
-      puts "API: #{end_point}"
       request = Typhoeus::Request.new(
         end_point,
         method: :put,
@@ -56,7 +57,6 @@ module Bot
   
     def post_request(end_point)
       end_point = "#{API_HOST}/#{end_point}"
-      puts "API: #{end_point}"
       request = Typhoeus::Request.new(
         end_point,
         method: :post,

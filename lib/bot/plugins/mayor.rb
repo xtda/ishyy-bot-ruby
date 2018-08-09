@@ -10,7 +10,8 @@ module Bot
     match(/setbonus (.+)/, method: :set_bonus)
     match(/funds$/, method: :funds)
     match(/tax$/, method: :tax)
-    
+    match(/mayorraffle$/, method: :mayorraffle)
+
     def transfer(message, option)
       give_to = option.split(' ')[0]
       amount = option.split(' ')[1]
@@ -27,6 +28,18 @@ module Bot
     def mayor(message)
       end_point = 'mayor_system/current'
       get_request(end_point)
+    end
+
+    def mayorraffle(message)
+      end_point = 'mayor_system/current/name'
+      res = get_request(end_point)
+      return unless message.user.nick.eql?(res['success'])
+      end_point = 'mayor_system/funds/current'
+      res = get_request(end_point)
+      return unless res['success'] >= 3000
+      message.reply '!raffle 3000'
+      end_point = 'mayor_system/funds/take/xtda616/3000'
+      post_request(end_point)
     end
 
     def funds(message)
