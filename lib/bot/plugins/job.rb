@@ -7,7 +7,7 @@ module Bot
     match(/job$/, method: :job)
     match(/work$/, method: :job)
     match(/bonus$/, method: :show_bonus)
-    
+
     def sign_on(message, option)
       end_point = "job_system/sign_on/#{message.user.nick}/#{option}"
       post_request(end_point)
